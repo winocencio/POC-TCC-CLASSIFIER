@@ -1,1 +1,0 @@
-start ./openCV/opencv_createsamples -info ../positivas/positivas.lst -num 1800 -w 18 -h 18 -vec ../positivas/positivas.vec
