@@ -1,0 +1,1 @@
+dir /b "../negativas/*.jpg" > "../negativas/bg.txt"
