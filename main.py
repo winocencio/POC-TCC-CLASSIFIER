@@ -3,6 +3,7 @@ from objetos_pre.converte_objetos import converteObjetos, moveObjetos
 from scripts.criar_positivas import criarPositivas ,  gerarVetorFinal
 from scripts.gerar_xml import gerarXml
 from scripts.Parametro import Parametro
+from scripts.apagar_pastas import apagarPastasVetoresEPositivas
 import cv2
 
 parametro = Parametro(25,800,2,10,"GS",18,"parametro.json")
@@ -22,9 +23,7 @@ parametro.carregar_versao()
 #converteObjetos()
 #moveObjetos()
 
-#criar positivos_pre
-    #um for aqui, apagando as pastas "positivos e vetores"
-
+apagarPastasVetoresEPositivas()
 criarPositivas(parametro)
 gerarVetorFinal()
 gerarXml(parametro)
