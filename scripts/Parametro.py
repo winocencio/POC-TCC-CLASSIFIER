@@ -1,6 +1,7 @@
 import json
 import cv2
 import os
+from datetime import datetime 
 
 path = os.path.dirname(__file__)
 
@@ -14,6 +15,7 @@ class Parametro:
         self.wh = wh
         self.numero_versao = 0
         self.path_arquivo_versao = path_arquivo_versao
+        self.tempo_percorrido = datetime.now()
 
     def filtro_cv(self):
         if(self.filtro == "GS"):
@@ -22,6 +24,7 @@ class Parametro:
         return cv2.COLOR_BGR2RGB
         
     def escrever_versao(self):
+        self.tempo_percorrido = str(datetime.now() - self.tempo_percorrido)
         os.chdir(path)
         with open(self.path_arquivo_versao, 'r') as f:
             json_parametro = json.load(f)
@@ -31,6 +34,8 @@ class Parametro:
             json_parametro.append(self.__dict__)
             f.write(json.dumps(json_parametro))
             f.close()
+
+        print('Tempo percorrido: {0}'.format(self.tempo_percorrido))
 
     def carregar_versao(self):
         os.chdir(path)
