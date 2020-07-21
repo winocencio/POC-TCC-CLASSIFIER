@@ -5,7 +5,7 @@ from scripts.gerar_xml import gerarXml
 from scripts.Parametro import Parametro
 import cv2
 
-parametro = Parametro(10,800,2,10,"GS",18,"parametro.json")
+parametro = Parametro(25,800,2,10,"GS",18,"parametro.json")
 parametro.carregar_versao()
 # print(parametro.numero_versao)
 # print(parametro.path_arquivo_versao)
