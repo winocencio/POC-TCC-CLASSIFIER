@@ -1,0 +1,1 @@
+REM rd /s /q classificador

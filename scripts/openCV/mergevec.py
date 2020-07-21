@@ -45,7 +45,7 @@ File Description:
 		This should show the .vec files in sequence.
 
 """
-
+import os
 import sys
 import glob
 import struct
@@ -108,6 +108,7 @@ def merge_vec_files(vec_directory, output_vec_file):
 		sys.exit(1)
 	# Check to make sure there are more than one .vec files
 	if len(files) == 1:
+		os.rename(files[0], output_vec_file)
 		print('Only 1 vec file was found in directory: {0}. Cannot merge a single file.'.format(vec_directory))
 		sys.exit(1)
 
