@@ -1,1 +1,69 @@
-[{"numero_versao": 2}, {"numero_objetos": 5, "numero_negativos_treino": 800, "proporcao_negativos_para_positivos": 2, "numero_estagios": 10, "filtro": "GS", "wh": 18, "numero_versao": 3, "path_arquivo_versao": "scripts/parametro.json"}, {"numero_objetos": 10, "numero_negativos_treino": 800, "proporcao_negativos_para_positivos": 2, "numero_estagios": 10, "filtro": "GS", "wh": 18, "numero_versao": 4, "path_arquivo_versao": "parametro.json"}, {"numero_objetos": 25, "numero_negativos_treino": 800, "proporcao_negativos_para_positivos": 2, "numero_estagios": 10, "filtro": "GS", "wh": 18, "numero_versao": 5, "path_arquivo_versao": "parametro.json", "tempo_percorrido": "0:05:55.571546"}, {"numero_objetos": 50, "numero_negativos_treino": 800, "proporcao_negativos_para_positivos": 2, "numero_estagios": 10, "filtro": "GS", "wh": 18, "numero_versao": 6, "path_arquivo_versao": "parametro.json", "tempo_percorrido": "0:05:47.631103"}, {"numero_objetos": 1, "numero_negativos_treino": 1000, "proporcao_negativos_para_positivos": 2, "numero_estagios": 10, "filtro": "GS", "wh": 18, "numero_versao": 7, "path_arquivo_versao": "parametro.json", "tempo_percorrido": "0:03:57.758783"}]
+[
+    {
+        "numero_versao": 2
+    },
+    {
+        "numero_objetos": 5,
+        "numero_negativos_treino": 800,
+        "proporcao_negativos_para_positivos": 2,
+        "numero_estagios": 10,
+        "filtro": "GS",
+        "wh": 18,
+        "numero_versao": 3,
+        "path_arquivo_versao": "scripts/parametro.json"
+    },
+    {
+        "numero_objetos": 10,
+        "numero_negativos_treino": 800,
+        "proporcao_negativos_para_positivos": 2,
+        "numero_estagios": 10,
+        "filtro": "GS",
+        "wh": 18,
+        "numero_versao": 4,
+        "path_arquivo_versao": "parametro.json"
+    },
+    {
+        "numero_objetos": 25,
+        "numero_negativos_treino": 800,
+        "proporcao_negativos_para_positivos": 2,
+        "numero_estagios": 10,
+        "filtro": "GS",
+        "wh": 18,
+        "numero_versao": 5,
+        "path_arquivo_versao": "parametro.json",
+        "tempo_percorrido": "0:05:55.571546"
+    },
+    {
+        "numero_objetos": 50,
+        "numero_negativos_treino": 800,
+        "proporcao_negativos_para_positivos": 2,
+        "numero_estagios": 10,
+        "filtro": "GS",
+        "wh": 18,
+        "numero_versao": 6,
+        "path_arquivo_versao": "parametro.json",
+        "tempo_percorrido": "0:05:47.631103"
+    },
+    {
+        "numero_objetos": 1,
+        "numero_negativos_treino": 1000,
+        "proporcao_negativos_para_positivos": 2,
+        "numero_estagios": 10,
+        "filtro": "GS",
+        "wh": 18,
+        "numero_versao": 7,
+        "path_arquivo_versao": "parametro.json",
+        "tempo_percorrido": "0:03:57.758783"
+    },
+    {
+        "numero_objetos": 2,
+        "numero_negativos_treino": 1000,
+        "proporcao_negativos_para_positivos": 2,
+        "numero_estagios": 10,
+        "filtro": "GS",
+        "wh": 18,
+        "numero_versao": 8,
+        "path_arquivo_versao": "parametro.json",
+        "tempo_percorrido": "0:06:07.028400"
+    }
+]

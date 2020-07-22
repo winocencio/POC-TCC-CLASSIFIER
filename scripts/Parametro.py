@@ -32,7 +32,7 @@ class Parametro:
 
         with open(self.path_arquivo_versao, 'w') as f:
             json_parametro.append(self.__dict__)
-            f.write(json.dumps(json_parametro))
+            f.write(json.dumps(json_parametro, indent=4))
             f.close()
 
         print('Tempo percorrido: {0}'.format(self.tempo_percorrido))
