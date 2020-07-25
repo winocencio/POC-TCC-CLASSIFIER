@@ -175,5 +175,16 @@
         "numero_versao": 18,
         "path_arquivo_versao": "parametro.json",
         "tempo_percorrido": "1:00:38.184762"
+    },
+    {
+        "numero_objetos": 1,
+        "numero_negativos_treino": 5000,
+        "proporcao_negativos_para_positivos": 2,
+        "numero_estagios": 10,
+        "filtro": "GS",
+        "wh": 18,
+        "numero_versao": 19,
+        "path_arquivo_versao": "parametro.json",
+        "tempo_percorrido": "2:44:01.712477"
     }
 ]
