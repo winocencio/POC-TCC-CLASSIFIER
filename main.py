@@ -6,7 +6,7 @@ from scripts.Parametro import Parametro
 from scripts.apagar_pastas import apagarPastasVetoresEPositivas
 import cv2
 
-parametro = Parametro(1,5000,2,10,"GS",18,"parametro.json")
+parametro = Parametro(2,5000,2,10,"GS",18,"parametro.json")
 parametro.carregar_versao()
 # print(parametro.numero_versao)
 # print(parametro.path_arquivo_versao)
