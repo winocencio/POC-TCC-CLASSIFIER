@@ -11,8 +11,8 @@ COMANDO_GERAR_VETOR_FINAL = 'python ./openCV/mergevec.py -v ../vetores -o ../vet
 def criarPositivas(parametro):
     os.chdir(path)
     os.system(COMANDO_GERAR_LISTA_NEGATIVAS)
-    for i in range(1,parametro.numero_objetos+1):
-        print("Criando positivas:" + str(i) + " de " + str(parametro.numero_objetos))
+    for i in range(1,int(parametro.numero_objetos)+1):
+        print("Criando positivas:" + str(i) + " de " + parametro.numero_objetos)
         os.system(COMANDO_CRIAR_POSITIVA.format(i,parametro.numero_positivos_cada_objetos()))
         os.system(COMANDO_GERAR_VETOR_POSITIVO.format(i,parametro.numero_positivos_cada_objetos(),parametro.wh))
 
