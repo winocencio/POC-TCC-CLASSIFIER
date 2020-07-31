@@ -2,8 +2,8 @@ import os, os.path
 import cv2
 
 
-numero_imagens = len(os.listdir('./negativas_pre'))
-print(numero_imagens)
+numero_imagens = len(os.listdir('./negativas_pre/1'))
+print("Numero de negativas no total: ",numero_imagens)
 path = os.path.dirname(__file__)
 
 def transformaNegativas(filtro):
@@ -16,7 +16,7 @@ def transformaNegativas(filtro):
         print(nome_img + " finalizado.")
 
 def getImagem(nome):
-    return cv2.imread(path + '/' + nome)
+    return cv2.imread(path + '/1/' + nome)
 
 def gravaImagem(img,nome):
     cv2.imwrite(path + "/../negativas/" + nome, img)

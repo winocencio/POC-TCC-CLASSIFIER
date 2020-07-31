@@ -58,7 +58,7 @@ class Parametro:
         return self.numero_positivos_total()/self.numero_objetos
     
     def versao_cascade_resumida(self):
-        return 'cascadeV4-0{0}'.format(str(self.numero_versao))
+        return 'cascadeV{0}-{1}-0{2}'.format("0","5",str(self.numero_versao))
 
     def versao_cascade(self):
         return '{0}-{1}-{2}-{3}-{4}-{5}-{6}'.format(self.versao_cascade_resumida(),self.numero_objetos,self.numero_negativos_treino,self.proporcao_negativos_para_positivos,self.numero_estagios,self.filtro,self.wh)

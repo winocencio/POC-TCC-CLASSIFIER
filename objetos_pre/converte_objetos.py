@@ -2,6 +2,7 @@ import os, os.path
 
 COMANDO_CONVERTER = 'magick convert {0}.png -alpha background -background white {0}.jpg'
 COMANDO_MOVER = 'copy "../objetos_pre/*.jpg" "../objetos"'
+COMANDO_APAGAR = 'cd objetos_pre & del *.jpg"'
 
 path = os.path.dirname(__file__)
 def converteObjetos():
@@ -13,3 +14,7 @@ def converteObjetos():
 def moveObjetos():
     os.chdir(path)
     os.system(COMANDO_MOVER)
+
+def apagaObjetosPastaOrigem():
+    os.chdir(path)
+    os.system(COMANDO_APAGAR)

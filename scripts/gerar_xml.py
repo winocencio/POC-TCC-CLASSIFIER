@@ -4,4 +4,4 @@ import os
 def gerarXml(parametro):
     path = os.path.dirname(__file__)
     os.chdir(path)
-    os.system("5-gerar-classificador-xml.bat " + parametro.args_classificador())
+    os.system("gerar-classificador-xml.bat " + parametro.args_classificador())
