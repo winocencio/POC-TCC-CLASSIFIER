@@ -1,6 +1,7 @@
 import os
 from datetime import datetime
 from ..var import access as ACCESS
+from ..NoProcessException import NoProcessException
 import getpass
 
 from pynamodb.attributes import UnicodeAttribute, BooleanAttribute, UTCDateTimeAttribute
@@ -38,6 +39,10 @@ class To_Process(Model):
         self.status = "PROCESSANDO"
         self.save()
 
+    def saveErro(self):
+        self.status = "ERRO"
+        self.save()
+
     def save(self, conditional_operator=None, **expected_values):
         self.updatedAt = datetime.now()
         self.updatedBy = getpass.getuser()
@@ -47,6 +52,9 @@ class To_Process(Model):
         results = To_Process.scan()
         results = list(filter(lambda result: result.status == "AGUARDANDO", results))
         results.sort(key=n_negativos)
+        if len(results) == 0:
+            raise NoProcessException("Sem argumentos para processar")
+
         a_process = results[0]
         a_process.saveProcessando()
         return a_process

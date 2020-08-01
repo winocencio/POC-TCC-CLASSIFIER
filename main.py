@@ -4,29 +4,36 @@ from scripts.criar_positivas import criarPositivas ,  gerarVetorFinal
 from scripts.gerar_xml import gerarXml
 from scripts.model.To_Process import To_Process
 from scripts.apagar_pastas import apagarPastasVetoresEPositivas,apagarPastasObjetosENegativos
+from scripts.NoProcessException import NoProcessException
 import cv2
 
-a_process = To_Process.getNext()
-print(dict(a_process))
+try:
+    a_process = To_Process.getNext()
+    print(dict(a_process))
+    #Transforma negativas e coloca na nova pasta
+    transformaNegativas(cv2.COLOR_BGR2GRAY) # trocar para receber parametro
 
-#Transforma negativas e coloca na nova pasta
-transformaNegativas(cv2.COLOR_BGR2GRAY) # trocar para receber parametro
+    #transforma objetos e coloca na nova pasta
+    converteObjetos(a_process)
 
-#transforma objetos e coloca na nova pasta
-converteObjetos(a_process)
+    #Criando Positivas
+    criarPositivas(a_process)
+    gerarVetorFinal()
 
-#Criando Positivas
-criarPositivas(a_process)
-gerarVetorFinal()
+    #Iniciando o treinamento
+    gerarXml(a_process)
 
-#Iniciando o treinamento
-gerarXml(a_process)
+    #Limpando remanecentes
+    apagarPastasVetoresEPositivas()
+    apagarPastasObjetosENegativos()
+    #apagaObjetosPng()
+    #Finalização -> Enviando resultado para o S3 e registrando
+    #ENVIAR RESULTADO PARA O S3
 
-#Limpando remanecentes
-apagarPastasVetoresEPositivas()
-apagarPastasObjetosENegativos()
-#apagaObjetosPng()
-#Finalização -> Enviando resultado para o S3 e registrando
-#ENVIAR RESULTADO PARA O S3
-
-a_process.saveFinalizado()
+    a_process.saveFinalizado()
+except NoProcessException:
+    print("Sem argumentos disponiveis para processar")
+except Exception as e:
+    print(e)
+    print("Algo de errado ocorreu")
+    a_process.saveErro()
