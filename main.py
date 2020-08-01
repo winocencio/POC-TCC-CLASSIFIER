@@ -5,6 +5,7 @@ from scripts.gerar_xml import gerarXml
 from scripts.model.To_Process import To_Process
 from scripts.apagar_pastas import apagarPastasVetoresEPositivas,apagarPastasObjetosENegativos
 from scripts.NoProcessException import NoProcessException
+from scripts.upload_arquivos_s3 import uploadFiles
 import cv2
 
 try:
@@ -28,9 +29,11 @@ try:
     apagarPastasObjetosENegativos()
     #apagaObjetosPng()
     #Finalização -> Enviando resultado para o S3 e registrando
-    #ENVIAR RESULTADO PARA O S3
-
+    
+    uploadFiles(a_process)
     a_process.saveFinalizado()
+
+    print("Finalizado versão: " + a_process.versao_cascade_resumida())
 except NoProcessException:
     print("Sem argumentos disponiveis para processar")
 except Exception as e:

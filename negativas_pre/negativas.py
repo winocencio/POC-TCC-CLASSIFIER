@@ -7,7 +7,7 @@ print("Numero de negativas no total: ",numero_imagens)
 path = os.path.dirname(__file__)
 
 def transformaNegativas(filtro):
-    print("Iniciando transformação Imagens Negativas"+1)
+    print("Iniciando transformação Imagens Negativas")
     for numero_atual in range(1,numero_imagens):
         #adicionar um try catch aqui
         nome_img = "neg("+str(numero_atual) + ").jpg"
