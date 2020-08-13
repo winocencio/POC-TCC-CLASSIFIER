@@ -37,10 +37,15 @@ class To_Process(Model):
 
     def saveProcessando(self):
         self.status = "PROCESSANDO"
+        self.createdAt = datetime.now()
         self.save()
 
     def saveErro(self):
         self.status = "ERRO"
+        self.save()
+    
+    def saveAguardando(self):
+        self.status = "AGUARDANDO"
         self.save()
 
     def save(self, conditional_operator=None, **expected_values):

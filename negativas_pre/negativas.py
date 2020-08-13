@@ -1,22 +1,25 @@
-import os, os.path
+import os
 import cv2
+import glob
+import shutil
 
-
-numero_imagens = len(os.listdir('./negativas_pre/1'))
-print("Numero de negativas no total: ",numero_imagens)
 path = os.path.dirname(__file__)
+dest_dir = path + "/../negativas/"
 
-def transformaNegativas(filtro):
+def transformaNegativas(a_process):
+    numero_negativos_copiar = int(a_process.numero_negativos_treino)
+    files = glob.glob("./negativas_pre/"+a_process.filtro+"/*.jpg")
     print("Iniciando transformação Imagens Negativas")
-    for numero_atual in range(1,numero_imagens):
-        #adicionar um try catch aqui
-        nome_img = "neg("+str(numero_atual) + ").jpg"
-        img = getImagem(nome_img)
-        img = cv2.cvtColor(img,filtro)
-        gravaImagem(img,nome_img)
+    print("Numero de negativas no total: " + str(len(files)))
+    print("Numero de negativas para treino: " + a_process.numero_negativos_treino)
+    count =0
+    for file in files:
+        count +=1
+        if(count >= numero_negativos_copiar):
+            break
+        shutil.copy(file,dest_dir)
+        print(percentile(count,int(a_process.numero_negativos_treino)) + " na transformação de imagens negativas", end="\r")
+    print("")
 
-def getImagem(nome):
-    return cv2.imread(path + '/1/' + nome)
-
-def gravaImagem(img,nome):
-    cv2.imwrite(path + "/../negativas/" + nome, img)
+def percentile(number1,number2):
+    return '{0:.2f}%'.format((number1 / number2 * 100))
