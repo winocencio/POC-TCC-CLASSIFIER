@@ -1,1 +1,0 @@
-python ./openCV/mergevec.py -v ../vetores -o ../vetores/vetor_final.vec
