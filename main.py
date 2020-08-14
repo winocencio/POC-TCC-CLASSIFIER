@@ -3,7 +3,7 @@ from objetos_pre.converte_objetos import converteObjetos, apagaObjetosPng
 from scripts.criar_positivas import criarPositivas ,  gerarVetorFinal
 from scripts.gerar_xml import gerarXml
 from scripts.model.To_Process import To_Process
-from scripts.apagar_pastas import apagarPastasVetoresEPositivas,apagarPastasObjetosENegativos
+from scripts.pastas import apagarPastas, criarPastas
 from scripts.NoProcessException import NoProcessException
 from scripts.upload_arquivos_s3 import uploadFiles
 import cv2
@@ -12,6 +12,8 @@ import sys
 try:
     a_process = To_Process.getNext()
     print(dict(a_process))
+
+    criarPastas()
     #Transforma negativas e coloca na nova pasta
     transformaNegativas(a_process) # trocar para receber parametro
 
@@ -26,8 +28,7 @@ try:
     gerarXml(a_process)
 
     #Limpando remanecentes
-    apagarPastasVetoresEPositivas()
-    apagarPastasObjetosENegativos()
+    apagarPastas()
     #apagaObjetosPng()
     
     uploadFiles(a_process)
