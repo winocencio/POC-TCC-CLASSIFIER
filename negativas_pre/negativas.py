@@ -6,7 +6,7 @@ import shutil
 path = os.path.dirname(__file__)
 dest_dir = path + "/../negativas/"
 
-def transformaNegativas(a_process):
+def moveNegativasComFiltro(a_process):
     numero_negativos_copiar = int(a_process.numero_negativos_treino)
     files = glob.glob("./negativas_pre/"+a_process.filtro+"/*.jpg")
     print("Iniciando transformação Imagens Negativas")

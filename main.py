@@ -1,5 +1,5 @@
-from negativas_pre.negativas import transformaNegativas
-from objetos_pre.converte_objetos import converteObjetos, apagaObjetosPng
+from negativas_pre.negativas import moveNegativasComFiltro
+from objetos_pre.converte_objetos import moveObjetosComFiltro
 from scripts.criar_positivas import criarPositivas ,  gerarVetorFinal
 from scripts.gerar_xml import gerarXml
 from scripts.model.To_Process import To_Process
@@ -14,12 +14,12 @@ try:
     print(dict(a_process))
 
     criarPastas()
-    #Transforma negativas e coloca na nova pasta
-    transformaNegativas(a_process) # trocar para receber parametro
 
-    #transforma objetos e coloca na nova pasta
-    converteObjetos(a_process)
-
+    #Move Negativas da pasta com filtros para pasta Negativas
+    moveNegativasComFiltro(a_process)
+    
+    #Move Objeto da pasta com filtros para pasta objetos
+    moveObjetosComFiltro(a_process)
     #Criando Positivas
     criarPositivas(a_process)
     gerarVetorFinal()
@@ -40,9 +40,11 @@ except NoProcessException:
 except Exception as e:
     print(e)
     print("Algo de errado ocorreu")
+    apagarPastas()
     a_process.saveErro()
 except KeyboardInterrupt:
     print("")
     print("Script Interrompido")
+    apagarPastas()
     a_process.saveAguardando()
     sys.exit(0)
