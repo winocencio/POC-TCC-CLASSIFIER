@@ -13,6 +13,12 @@ try:
     a_process = To_Process.getNext()
     print(dict(a_process))
 
+    try:
+        quantidade_memoria_usada = sys.argv[1]
+    except Exception:
+        print('Nao passado quantidade de memoria para o buffer, usado padrao (1024) ')
+        quantidade_memoria_usada = '1024'
+
     criarPastas()
 
     #Move Negativas da pasta com filtros para pasta Negativas
@@ -25,13 +31,13 @@ try:
     gerarVetorFinal()
 
     #Iniciando o treinamento
-    gerarXml(a_process)
+    gerarXml(a_process,quantidade_memoria_usada)
 
-    #Limpando remanecentes
-    apagarPastas()
-    #apagaObjetosPng()
-    
     uploadFiles(a_process)
+    
+    #Limpando remanecentes
+    #apagaObjetosPng()
+    apagarPastas()
     a_process.saveFinalizado()
 
     print("Finalizado versão: " + a_process.versao_cascade_resumida())
@@ -40,7 +46,11 @@ except NoProcessException:
 except Exception as e:
     print(e)
     print("Algo de errado ocorreu")
-    apagarPastas()
+    try:
+        apagarPastas()
+    except Exception:
+        print('')
+
     a_process.saveErro()
 except KeyboardInterrupt:
     print("")

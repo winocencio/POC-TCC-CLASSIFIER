@@ -30,6 +30,9 @@ class To_Process(Model):
     updatedAt = UTCDateTimeAttribute(null=False)
     updatedBy = UnicodeAttribute(null=False)
     result = UnicodeAttribute(null=False, default="-")
+    featureType = UnicodeAttribute(null=False)
+    boostType = UnicodeAttribute(null=False)
+    mode = UnicodeAttribute(null=False)
 
     def saveFinalizado(self):
         self.status = "FINALIZADO"
@@ -80,7 +83,7 @@ class To_Process(Model):
         return 'cascadeV{0}-{1}-0{2}'.format("0","5",str(self.numero_versao))
 
     def args_classificador(self):
-        return '{0} {1} {2} {3} {4}'.format(self.versao_cascade_resumida(),self.numero_positivos_treino(),self.numero_negativos_treino,self.wh,self.numero_estagios)
+        return '{0} {1} {2} {3} {4} {5} {6} {7}'.format(self.versao_cascade_resumida(),self.numero_positivos_treino(),self.numero_negativos_treino,self.wh,self.numero_estagios,self.featureType,self.mode,self.boostType)
 
     def filtro_cv(self):
         if(self.filtro == "GS"):
