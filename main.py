@@ -6,18 +6,37 @@ from scripts.model.To_Process import To_Process
 from scripts.pastas import apagarPastas, criarPastas
 from scripts.NoProcessException import NoProcessException
 from scripts.upload_arquivos_s3 import uploadFiles
+from scripts.model.Comando import Comando
 import cv2
 import sys
 
 try:
-    a_process = To_Process.getNext()
-    print(dict(a_process))
-
     try:
         quantidade_memoria_usada = sys.argv[1]
     except Exception:
-        print('Nao passado quantidade de memoria para o buffer, usado padrao (1024) ')
-        quantidade_memoria_usada = '1024'
+        print('Nao especificado quantidade de memoria para uso')
+        raise NoProcessException('Nao especificado quantidade de memoria para uso')
+
+    print('Quantidade de memoria para o buffer, usado padrao ({0}) '.format(quantidade_memoria_usada))
+
+    try:
+        comando = sys.argv[2]
+        if(comando == 'WIN'):
+            comando = Comando.WINDOWS
+        elif(comando == 'LIN'):
+            comando = Comando.LINUX
+        else:
+            raise Exception()
+    except Exception:
+        print('Nao especificado Sistema Operacional')
+        raise NoProcessException('Nao especificado Sistema Operacional')
+
+
+    print('Rodando no sistema: ' + comando.descricao)
+
+    a_process = To_Process.getNext()
+    a_process.setComando(comando)
+    print(dict(a_process))
 
     criarPastas()
 
@@ -28,7 +47,7 @@ try:
     moveObjetosComFiltro(a_process)
     #Criando Positivas
     criarPositivas(a_process)
-    gerarVetorFinal()
+    gerarVetorFinal(a_process)
 
     #Iniciando o treinamento
     gerarXml(a_process,quantidade_memoria_usada)

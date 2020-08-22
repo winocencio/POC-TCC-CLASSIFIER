@@ -33,6 +33,12 @@ class To_Process(Model):
     featureType = UnicodeAttribute(null=False)
     boostType = UnicodeAttribute(null=False)
     mode = UnicodeAttribute(null=False)
+    sysOpComando = 0
+    sysOp = UnicodeAttribute(null=True)
+
+    def setComando(self,comando):
+        self.sysOpComando = comando
+        self.sysOp = comando.descricao
 
     def saveFinalizado(self):
         self.status = "FINALIZADO"

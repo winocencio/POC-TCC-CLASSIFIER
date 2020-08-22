@@ -12,12 +12,14 @@ TODO 13/08:
 - [X] apagar pastas utilizando o python
 - [X] Modificar script para aceitar objetos em pastas de filtros  
 - [X] Adicionar objetos GS  
+- [X] Adicionar parametro para receber quantidade de memoria no main.py
+- [X] Verificar parametro de criação de positivas (angulo)
+- [X] Modificar script para que seja possivel rodar em linux 
+- [ ] Realizar testes no linux
 - [ ] Adicionar negativas TRUNC  
 - [ ] Adicionar objetos TRUNC  
 - [ ] Criar script para baixar objetos_pre  
 - [ ] Adicionar validacao de proporcao de criacao de positivas  
 - [ ] Remover arquivos .jpg e .png do projeto com gitignore  
-- [ ] Modificar script para que seja possivel rodar em linux  
 - [ ] Mudar print para logging para debugar no linux
-- [X] Adicionar parametro para receber quantidade de memoria no main.py
-- [ ] Verificar parametro de criação de positivas (angulo)
+

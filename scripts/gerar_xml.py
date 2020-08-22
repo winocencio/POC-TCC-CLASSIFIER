@@ -4,4 +4,4 @@ import os
 def gerarXml(parametro,quantidade_memoria_usada):
     path = os.path.dirname(__file__)
     os.chdir(path)
-    os.system("gerar-classificador-xml.bat " + parametro.args_classificador()  + ' ' + quantidade_memoria_usada)
+    os.system(parametro.sysOpComando.gerar_classificador_xml_arquivo + " " + parametro.args_classificador()  + ' ' + quantidade_memoria_usada)

@@ -6,9 +6,13 @@ import shutil
 path = os.path.dirname(__file__)
 dest_dir = path + "/../negativas/"
 
+def sortKeyFunc(s):
+    return int(os.path.basename(s)[:-4])
+
 def moveNegativasComFiltro(a_process):
     numero_negativos_copiar = int(a_process.numero_negativos_treino)
     files = glob.glob("./negativas_pre/"+a_process.filtro+"/*.jpg")
+    files.sort(key=sortKeyFunc)
     print("Iniciando transformação Imagens Negativas")
     print("Numero de negativas no total: " + str(len(files)))
     print("Numero de negativas para treino: " + a_process.numero_negativos_treino)
