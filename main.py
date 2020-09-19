@@ -59,7 +59,7 @@ try:
     apagarPastas()
     a_process.saveFinalizado()
 
-    print("Finalizado versão: " + a_process.versao_cascade_resumida())
+    print("Finalizado versao: " + a_process.versao_cascade_resumida())
 except NoProcessException:
     print("Sem argumentos disponiveis para processar")
 except Exception as e:
