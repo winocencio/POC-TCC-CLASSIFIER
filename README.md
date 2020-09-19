@@ -16,6 +16,10 @@ TODO 13/08:
 - [X] Verificar parametro de criação de positivas (angulo)
 - [X] Modificar script para que seja possivel rodar em linux 
 - [ ] Realizar testes no linux
+- [ ] adicionar conta da memoria, para o usuario do mainpy nao precisar fazer calculo
+- [ ] link do resultado no banco
+- [ ] nome vindo do access.py para o log do dinamoDB
+- [ ] gravar memoria usada no banco
 - [ ] Adicionar negativas TRUNC  
 - [ ] Adicionar objetos TRUNC  
 - [ ] Criar script para baixar objetos_pre  
