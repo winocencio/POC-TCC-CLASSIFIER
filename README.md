@@ -16,7 +16,7 @@ TODO 13/08:
 - [X] Verificar parametro de criação de positivas (angulo)
 - [X] Modificar script para que seja possivel rodar em linux 
 - [ ] Realizar testes no linux
-- [ ] adicionar conta da memoria, para o usuario do mainpy nao precisar fazer calculo
+- [X] adicionar conta da memoria, para o usuario do mainpy nao precisar fazer calculo
 - [ ] link do resultado no banco
 - [ ] nome vindo do access.py para o log do dinamoDB
 - [ ] gravar memoria usada no banco
@@ -35,10 +35,8 @@ python main.py {quantidadeDeMemoria} {sistemaOperacional}
 
 quantidadeDeMemoria:
     Obrigatorio
-    quantidade de memoria que será usado para o buffer do Precalculo e do Index do ID.
-    será essa quantidade para cada buffer.
-    sendo dois buffers, seu computador deve ter disponivel o valor de (quantidadeDeMemoria * 2)
-    valor recomendado: 1024
+    quantidade de memoria total que será usado para o buffer do haarcascade
+    valor recomendado: 2048 (2Gb alocado para o treinamento)
 
 sistemaOperacional:
     Obrigatorio

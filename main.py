@@ -12,12 +12,13 @@ import sys
 
 try:
     try:
-        quantidade_memoria_usada = sys.argv[1]
+        quantidade_memoria_total = sys.argv[1]
+        quantidade_memoria_usada = quantidade_memoria_total/2
     except Exception:
         print('Nao especificado quantidade de memoria para uso')
         raise NoProcessException('Nao especificado quantidade de memoria para uso')
 
-    print('Quantidade de memoria para o buffer, usado padrao ({0}) '.format(quantidade_memoria_usada))
+    print('Quantidade de memoria alocado no total: ({0}) '.format(quantidade_memoria_total))
 
     try:
         comando = sys.argv[2]
