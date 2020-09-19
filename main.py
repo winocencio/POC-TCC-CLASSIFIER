@@ -13,7 +13,7 @@ import sys
 try:
     try:
         quantidade_memoria_total = sys.argv[1]
-        quantidade_memoria_usada = quantidade_memoria_total/2
+        quantidade_memoria_usada = int(quantidade_memoria_total)/2
     except Exception:
         print('Nao especificado quantidade de memoria para uso')
         raise NoProcessException('Nao especificado quantidade de memoria para uso')
@@ -21,11 +21,11 @@ try:
     print('Quantidade de memoria alocado no total: ({0}) '.format(quantidade_memoria_total))
 
     try:
-        comando = sys.argv[2]
-        if(comando == 'WIN'):
-            comando = Comando.WINDOWS
-        elif(comando == 'LIN'):
-            comando = Comando.LINUX
+        sistemaOperacional = sys.argv[2]
+        if(sistemaOperacional == 'WIN'):
+            sistemaOperacional = Comando.WINDOWS
+        elif(sistemaOperacional == 'LIN'):
+            sistemaOperacional = Comando.LINUX
         else:
             raise Exception()
     except Exception:
@@ -33,11 +33,13 @@ try:
         raise NoProcessException('Nao especificado Sistema Operacional')
 
 
-    print('Rodando no sistema: ' + comando.descricao)
+    print('Rodando no sistema: ' + sistemaOperacional.descricao)
 
     a_process = To_Process.getNext()
-    a_process.setComando(comando)
+    a_process.setComando(sistemaOperacional)
+    a_process.numero_total_mb_usado = quantidade_memoria_total
     print(dict(a_process))
+    a_process.saveProcessando()
 
     criarPastas()
 
@@ -51,7 +53,7 @@ try:
     gerarVetorFinal(a_process)
 
     #Iniciando o treinamento
-    gerarXml(a_process,quantidade_memoria_usada)
+    gerarXml(a_process)
 
     uploadFiles(a_process)
     

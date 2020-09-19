@@ -24,7 +24,6 @@ class To_Process(Model):
     filtro = UnicodeAttribute(null=False)
     wh = UnicodeAttribute(null=False)
     numero_versao = UnicodeAttribute(null=False)
-    #TODO colocar novos parametros
     createdAt = UTCDateTimeAttribute(null=False, default=datetime.now())
     createdBy = UnicodeAttribute(null=False, default=ACCESS.CreationUser)
     updatedAt = UTCDateTimeAttribute(null=False)
@@ -35,6 +34,7 @@ class To_Process(Model):
     mode = UnicodeAttribute(null=False)
     sysOpComando = 0
     sysOp = UnicodeAttribute(null=True)
+    numero_total_mb_usado = UnicodeAttribute(null=True)
 
     def setComando(self,comando):
         self.sysOpComando = comando
@@ -43,6 +43,11 @@ class To_Process(Model):
     def saveFinalizado(self):
         self.status = "FINALIZADO"
         self.save()
+
+    def saveIniciando(self):
+        self.status = "INICIANDO"
+        self.createdAt = datetime.now()
+        self.save()        
 
     def saveProcessando(self):
         self.status = "PROCESSANDO"
@@ -59,7 +64,7 @@ class To_Process(Model):
 
     def save(self, conditional_operator=None, **expected_values):
         self.updatedAt = datetime.now()
-        self.updatedBy = getpass.getuser()
+        self.updatedBy = getpass.getuser() + "-" + ACCESS.UpdateUser
         super(To_Process, self).save()
 
     def getNext():
@@ -70,7 +75,7 @@ class To_Process(Model):
             raise NoProcessException("Sem argumentos para processar")
 
         a_process = results[0]
-        a_process.saveProcessando()
+        a_process.saveIniciando()
         return a_process
 
     def numero_positivos_treino(self):
@@ -89,13 +94,16 @@ class To_Process(Model):
         return 'cascadeV{0}-{1}-0{2}'.format("0","5",str(self.numero_versao))
 
     def args_classificador(self):
-        return '{0} {1} {2} {3} {4} {5} {6} {7}'.format(self.versao_cascade_resumida(),self.numero_positivos_treino(),self.numero_negativos_treino,self.wh,self.numero_estagios,self.featureType,self.mode,self.boostType)
+        return '{0} {1} {2} {3} {4} {5} {6} {7} {8}'.format(self.versao_cascade_resumida(),self.numero_positivos_treino(),self.numero_negativos_treino,self.wh,self.numero_estagios,self.featureType,self.mode,self.boostType,self.numero_negativos_treino)
 
     def filtro_cv(self):
         if(self.filtro == "GS"):
             return cv2.COLOR_BGR2GRAY
         
         return cv2.COLOR_BGR2RGB
+    
+    def numero_mb_para_treino(self):
+        return int(numero_total_mb_usado)/2
 
     def __iter__(self):
         for name, attr in self._get_attributes().items():
