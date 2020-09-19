@@ -17,7 +17,7 @@ cd ../../vetores
 copy vetor_final.vec "../negativas"
 cd ../negativas
 mkdir classificador
-opencv_traincascade -data classificador -vec vetor_final.vec -bg bg.txt -numPos %numPos% -numNeg %numNeg% -numStages %numStages% -w %wh% -h %wh% -precalcBufSize %memoriaUsada% -precalcIdxBufSize %memoriaUsada% -featureType %featureType% -mode %mode% -bt %boostType%
+opencv_traincascade -data classificador -vec vetor_final.vec -bg bg.txt -numPos %numPos% -numNeg %numNeg% -numStages %numStages% -w %wh% -h %wh% -precalcValBufSize %memoriaUsada% -precalcIdxBufSize %memoriaUsada% -featureType %featureType% -mode %mode% -bt %boostType%
 del opencv_traincascade.exe
 del opencv_world346.dll
 del vetor_final.vec
