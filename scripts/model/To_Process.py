@@ -103,7 +103,7 @@ class To_Process(Model):
         return cv2.COLOR_BGR2RGB
     
     def numero_mb_para_treino(self):
-        return int(numero_total_mb_usado)/2
+        return int(self.numero_total_mb_usado)/2
 
     def __iter__(self):
         for name, attr in self._get_attributes().items():
