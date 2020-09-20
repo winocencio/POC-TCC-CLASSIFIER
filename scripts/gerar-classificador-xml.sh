@@ -17,6 +17,6 @@ opencv_traincascade -data classificador -vec vetor_final.vec -bg bg.txt -numPos 
 rm vetor_final.vec
 cd classificador
 mkdir "../../classificador/$destino"
-cp "*" "../../classificador/$destino"
+cp ./* "../../classificador/$destino"
 cd ..
 rm -rf classificador

@@ -64,8 +64,11 @@ class To_Process(Model):
 
     def save(self, conditional_operator=None, **expected_values):
         self.updatedAt = datetime.now()
-        self.updatedBy = getpass.getuser() + "-" + ACCESS.UpdateUser
+        self.updatedBy = self.getUpdateUser()
         super(To_Process, self).save()
+
+    def getUpdateUser(self):
+        return getpass.getuser() + "-" + ACCESS.UpdateUser
 
     def getNext():
         results = To_Process.scan()
