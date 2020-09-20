@@ -13,3 +13,5 @@ def uploadFiles(parametro):
     with open("cascade.xml",'rb') as cascade, open("params.xml",'rb') as params:
         conn.upload("cascades/"+parametro.versao_cascade_resumida()+"/cascade.xml",cascade,ACCESS.bucket_name)
         conn.upload("cascades/"+parametro.versao_cascade_resumida()+"/params.xml",params,ACCESS.bucket_name)
+
+    parametro.result = 'https://ovitrap-images.s3.amazonaws.com/cascades/{0}'.format(parametro.versao_cascade_resumida())

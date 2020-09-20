@@ -15,11 +15,12 @@ TODO 13/08:
 - [X] Adicionar parametro para receber quantidade de memoria no main.py
 - [X] Verificar parametro de criação de positivas (angulo)
 - [X] Modificar script para que seja possivel rodar em linux 
-- [ ] Realizar testes no linux
+- [X] Realizar testes no linux
 - [X] adicionar conta da memoria, para o usuario do mainpy nao precisar fazer calculo
-- [ ] link do resultado no banco
+- [X] link do resultado no banco
 - [X] nome vindo do access.py para o log do dinamoDB
 - [X] gravar memoria usada no banco
+- [ ] criar um watch que verifica se a maquina ja está processando algum
 - [ ] Adicionar negativas TRUNC  
 - [ ] Adicionar objetos TRUNC  
 - [ ] Criar script para baixar objetos_pre  

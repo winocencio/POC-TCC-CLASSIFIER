@@ -14,7 +14,7 @@ cp vetor_final.vec "../negativas"
 cd ../negativas
 mkdir classificador
 opencv_traincascade -data classificador -vec vetor_final.vec -bg bg.txt -numPos $numPos -numNeg $numNeg -numStages $numStages -w $wh -h $wh -precalcValBufSize $memoriaUsada -precalcIdxBufSize $memoriaUsada -featureType $featureType -mode $mode -bt $boostType
-del vetor_final.vec
+rm vetor_final.vec
 cd classificador
 mkdir "../../classificador/$destino"
 cp "*" "../../classificador/$destino"
